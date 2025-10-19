@@ -53,6 +53,11 @@ app.py          # Streamlit app (UI, agent, DB selection)
 sqlite.py       # Helper to create a sample SQLite DB (not required at runtime)
 student.db      # Sample SQLite DB used by default
 requirements.txt
+tests/          # Test files
+  test_db_connectivity.py  # Database connectivity tests
+.github/        # GitHub Actions and issue templates
+  workflows/test.yml       # CI workflow (example)
+  ISSUE_TEMPLATE/          # Issue templates
 ```
 
 ## Development
@@ -68,7 +73,20 @@ python sqlite.py
 This project does not enforce a specific linter yet. Contributors may use `ruff`/`black` locally if preferred.
 
 ### Testing
-No automated tests yet. See the beginner issues for suggested test scaffolding.
+Basic database connectivity tests are available using pytest:
+
+```bash
+pip install pytest
+pytest tests/ -v
+```
+
+The tests verify:
+- SQLite database file exists
+- Database connection works
+- STUDENT table exists with correct structure
+- Table contains sample data
+
+See `.github/ISSUE_TEMPLATE/add-ci-pipeline.md` for adding CI/CD automation.
 
 ## Contributing
 We welcome contributions! Please read CONTRIBUTING.md for guidelines, local setup, and the pull request process.
